@@ -91,9 +91,6 @@ set fileformats=unix,dos,mac
 ""auto complete
 set wildmenu wildmode=list:full
 
-"dylib setting
-let $PYTHON_DLL = "usr/local/Cellar/python/2.7.9/Frameworks/Python.framework/Versions/2.7/lib/libpython2.7.dylib"
-
 ""plugin manager
 if &compatible
   set nocompatible
@@ -134,8 +131,13 @@ call dein#add('airblade/vim-gitgutter')
 highlight clear SignColumn
 
 "plugin: python settings
+"" syntax check
+call dein#add('vim-syntastic/syntastic')
+let g:syntastic_python_checkers = ['python', 'flake8', 'mypy']
+"" code complete
 call dein#add('davidhalter/jedi-vim')
-call dein#add('kevinw/pyflakes-vim')
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+"" display indent
 call dein#add('Yggdroot/indentLine')
 
 "plugin: go setting
