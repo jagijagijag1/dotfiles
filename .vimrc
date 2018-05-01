@@ -4,9 +4,9 @@ set noswapfile
 set noundofile
 set nobackup
 set autoread
-set showmode
+"set showmode
 set showcmd
-set showmatch
+set showmatch   "moving to matching braces
 set matchtime=1
 set wildmenu
 set incsearch
@@ -27,7 +27,7 @@ set number
 set statusline=%F%r%h%=
 let g:hybrid_use_iTerm_colors = 1
 colorscheme hybrid
-"miximizing gui window size
+"maximizing gui window size
 if has('gui_macvim')
   set lines=60 columns=200
   set guioptions-=T
@@ -47,7 +47,6 @@ set backspace=start,eol,indent
 
 """ctrl+p -> paste the content of clipboard
 set clipboard+=unnamed
-"set clipboard=unnamed
 "imap <C-p>  <ESC>"*pa
 
 """Y replace $y
@@ -146,6 +145,11 @@ call dein#add('fatih/vim-go')
 call dein#add('zchee/deoplete-go')
 "set completeopt=menu,preview
 set completeopt=menuone,preview
+
+"plugin: status/tabline setting
+call dein#add('bling/vim-airline')
+call dein#add('vim-airline/vim-airline-themes')
+let g:airline_theme='base16'
 
 call dein#end()
 
